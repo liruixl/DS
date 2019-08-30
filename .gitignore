@@ -1,0 +1,33 @@
+/.vs/
+/bin/
+/lib/
+/tmp/
+/log/
+/build/
+/x64/
+
+pch*
+*vcxproj*
+
+
+# Compiled Object files
+#*.slo
+#*.lo
+#*.o
+#*.obj
+
+# Compiled Dynamic libraries
+#*.so
+#*.dylib
+#*.dll
+
+# Compiled Static libraries
+#*.lai
+#*.la
+#*.a
+#*.lib
+
+# Executables
+#*.exe
+#*.out
+#*.app
