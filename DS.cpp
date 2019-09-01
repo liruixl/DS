@@ -3,6 +3,9 @@
 #include "ds/AList.h"
 #include "ds/LList.h"
 #include "ds/DLList.h"
+#include "dict/SALdict.h"
+
+#include "entity/Person.h"
 
 void testAList()
 {
@@ -90,7 +93,32 @@ void testDLList()
 	myList.printUpdown();
 }
 
+std::ostream & operator<<(std::ostream & os, const Person & p)
+{
+	os << p.getName() << " : " << p.getAge() << "; ";
+	return os;
+}
+
+
+void testSAList()
+{
+	Person lirui;
+	lirui.setName("lirui");
+	SALDict<int,Person,KeyComp,AgeComp> dict(20);
+
+	for (int i = 0; i < 20; ++i)
+	{
+		lirui.setAge(i);
+		dict.insert(lirui);
+	}
+
+	dict.find(12, lirui);
+
+	std::cout << lirui.getAge() << std::endl;
+
+}
+
 int main()
 {
-	testLList();
+	testSAList();
 }
