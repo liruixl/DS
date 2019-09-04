@@ -9,6 +9,7 @@
 #include "ds/LStack.h"
 
 #include "ds/AQueue.h"
+#include "ds/LQueue.h"
 
 #include "entity/Person.h"
 
@@ -163,6 +164,7 @@ void testLStack()
 
 }
 
+
 void testAQueue()
 {
 	AQueue<int> aq(5);
@@ -181,11 +183,40 @@ void testAQueue()
 	aq.push(66);
 	aq.print();
 	aq.push(66);
+}
+
+void testLQueue()
+{
+	LQueue<int> lq;
+	std::cout << lq.size() << std::endl;
+
+	lq.push(66);
+	lq.print();
+	lq.push(55);
+	lq.print();
+	lq.push(44);
+	lq.print();
+	lq.push(33);
+	lq.print();
+	lq.push(22);
+	lq.print();
+	lq.push(11);
+	lq.print();
+	lq.push(0);
+	lq.print();
+
+
+	lq.pop();
+	lq.print();
+	lq.pop();
+	lq.print();
+	lq.pop();
+	lq.print();
 
 }
 
 int main()
 {
 	
-	testAQueue();
+	testLQueue();
 }
