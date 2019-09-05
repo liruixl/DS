@@ -11,6 +11,10 @@
 #include "ds/AQueue.h"
 #include "ds/LQueue.h"
 
+#include "ds/BinNode.h"
+#include "ds/BinNodePtr.h"
+#include "ds/Util.h"
+
 #include "entity/Person.h"
 
 void testAList()
@@ -105,7 +109,6 @@ std::ostream & operator<<(std::ostream & os, const Person & p)
 	return os;
 }
 
-
 void testSAList()
 {
 	Person lirui;
@@ -164,7 +167,6 @@ void testLStack()
 
 }
 
-
 void testAQueue()
 {
 	AQueue<int> aq(5);
@@ -205,7 +207,6 @@ void testLQueue()
 	lq.push(0);
 	lq.print();
 
-
 	lq.pop();
 	lq.print();
 	lq.pop();
@@ -215,8 +216,31 @@ void testLQueue()
 
 }
 
+
+
+
+void testBinNodePtr()
+{
+	Util util;
+
+	BinNodePtr<int>* one = new BinNodePtr<int>(1);
+	BinNodePtr<int>* two = new BinNodePtr<int>(2);
+	BinNodePtr<int>* three = new BinNodePtr<int>(3, one, two);
+	BinNodePtr<int>* four = new BinNodePtr<int>(4);
+	BinNodePtr<int>* five = new BinNodePtr<int>(5, nullptr, four);
+
+	BinNodePtr<int>* six = new BinNodePtr<int>(6, three, five);
+
+	util.preorder(six);
+	std::cout << "\n";
+	util.inorder(six);
+	std::cout << "\n";
+	util.postorder(six);
+}
+
+
+
 int main()
 {
-	
-	testLQueue();
+	testBinNodePtr();
 }
