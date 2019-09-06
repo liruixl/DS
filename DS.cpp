@@ -1,5 +1,7 @@
 ﻿
 #include <iostream>
+#include <assert.h>
+
 #include "ds/AList.h"
 #include "ds/LList.h"
 #include "ds/DLList.h"
@@ -14,6 +16,7 @@
 #include "ds/BinNode.h"
 #include "ds/BinNodePtr.h"
 #include "ds/Util.h"
+#include "ds/BST.h"
 
 #include "entity/Person.h"
 
@@ -238,9 +241,28 @@ void testBinNodePtr()
 	util.postorder(six);
 }
 
+void testBST()
+{
+	BST<int, Person> bst;
+
+	Person lirui;
+	lirui.setName("lirui");
+
+	for (int i = 0; i < 20; ++i)
+	{
+		lirui.setAge(i);
+		bst.insert(lirui.getAge(),lirui);
+	}
+
+	bst.print();
+
+	bst.remove(12,lirui);
+	bst.print();
+
+}
 
 
 int main()
 {
-	testBinNodePtr();
+	testBST();
 }
