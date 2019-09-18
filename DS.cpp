@@ -17,6 +17,9 @@
 #include "ds/BinNodePtr.h"
 #include "ds/Util.h"
 #include "ds/BST.h"
+#include "ds/MaxHeap.h"
+
+#include "algorithm/Algorithm.h"
 
 #include "entity/Person.h"
 
@@ -261,8 +264,50 @@ void testBST()
 
 }
 
+void testMaxHeap()
+{
+	int a[7] = { 1,5,7,4,2,6,3 };
+
+	MaxHeap<int> heap(a, 7, sizeof(a) / sizeof(a[0]));
+
+	for (int i = 0; i < 7; ++i)
+	{
+
+		std::cout << a[i] << "  ";
+
+	}
+	std::cout << std::endl;
+
+	int temp;
+	heap.removemax(temp);
+
+	for (int i = 0; i < 7; ++i)
+	{
+
+		std::cout << a[i] << "  ";
+
+	}
+	std::cout << std::endl;
+}
+
+void testbackpack01()
+{
+	int W[] = { 2,2,6,5,4 };
+	int V[] = { 6,3,5,4,6 };
+
+	std::cout << sizeof(W) << std::endl;
+	std::cout << sizeof(W[0]) << std::endl;
+
+	Algorithm::backpack01(W, V, 5, 8);
+}
 
 int main()
 {
-	testBST();
+
+	std::string str = "abcbada";
+
+	std::string res = Algorithm::longestPalindrome(str);
+	
+
+	return 0;
 }
