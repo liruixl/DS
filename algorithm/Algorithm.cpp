@@ -109,8 +109,50 @@ namespace Algorithm {
 		}
 
 		return s.substr(start, maxlen);
+	}
 
+	void DFS(Graph* G, int v)
+	{
+		//Previsit(G, v);
+		std::cout << v << " ";
+		G->setMark(v, 1);
 
+		for (int w = G->first(v); w < G->n(); w = G->next(v, w))
+		{
+			if(G->getMark(w) == 0)
+				DFS(G, w);
+		}
+		//Postvisit(G, v);
+	}
+	void BFS(Graph * G, int start, Queue<int>& Q)
+	{
+		int v;
+
+		Q.push(start);
+		G->setMark(start, 1);
+
+		while (!Q.empty())
+		{
+			Q.front(v);
+			Q.pop();
+
+			std::cout << v << " ";
+
+			//Postvisit(G, v);
+
+			for (int i = G->first(v); i < G->n(); i = G->next(v, i))
+			{
+				if (G->getMark(i) == 0)
+				{
+					Q.push(i);
+					G->setMark(i, 1);
+				}
+			
+			}
+
+			//Postvisit(G, v);
+
+		}
 	}
 }
 

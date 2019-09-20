@@ -19,6 +19,8 @@
 #include "ds/BST.h"
 #include "ds/MaxHeap.h"
 
+#include "ds/Graphm.h"
+
 #include "algorithm/Algorithm.h"
 
 #include "entity/Person.h"
@@ -301,12 +303,49 @@ void testbackpack01()
 	Algorithm::backpack01(W, V, 5, 8);
 }
 
+void testDBFS()
+{
+	int arr[] = { 1,2,3,4,5,6 };
+
+	Graphm G(7);
+
+	//  1      2
+	//  |\   / |
+	//  |  3   |
+	//  |  |\  |
+	//  |  4 \ | 
+	//  |   \ \|
+	//  5—————6
+
+	G.setEdge(1, 3, 1);
+	G.setEdge(1, 5, 1);
+	G.setEdge(2, 3, 1);
+	G.setEdge(2, 6, 1);
+	G.setEdge(3, 1, 1);
+	G.setEdge(3, 2, 1);
+	G.setEdge(3, 4, 1);
+	G.setEdge(3, 6, 1);
+	G.setEdge(4, 3, 1);
+	G.setEdge(4, 6, 1);
+	G.setEdge(5, 1, 1);
+	G.setEdge(5, 6, 1);
+	G.setEdge(6, 2, 1);
+	G.setEdge(6, 3, 1);
+	G.setEdge(6, 4, 1);
+	G.setEdge(6, 5, 1);
+
+	//1 3 2 6 4 5
+	//Algorithm::DFS(&G, 1);
+
+	AQueue<int> Q(6);
+
+	//1 3 5 2 4 6
+	Algorithm::BFS(&G, 1, Q);
+}
+
+
 int main()
 {
-
-	std::string str = "abcbada";
-
-	std::string res = Algorithm::longestPalindrome(str);
 	
 
 	return 0;
